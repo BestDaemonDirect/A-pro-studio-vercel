@@ -1,5 +1,4 @@
 import logging
-import threading
 import requests
 from settings import TELEGRAM_BOT_CHAT_ID, TELEGRAM_BOT_TOKEN
 
@@ -38,5 +37,4 @@ def send_telegram_notification(name, email, phone, comment):
         logger.exception("Telegram sendMessage request failed: %s", exc)
         return False
 
-def send_telegram_notification_async(**kwargs):
-    threading.Thread(target=lambda: send_telegram_notification(**kwargs), daemon=True).start()
+
