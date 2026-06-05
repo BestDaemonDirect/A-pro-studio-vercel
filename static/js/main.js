@@ -118,6 +118,71 @@
         }
     }
 
+    function setupOrderForm() {
+        var form = document.querySelector('.form[data-order-form]');
+        if (!form) {
+            return;
+        }
+
+        var submitButton = form.querySelector('.btn-submit');
+
+        function getSubmittingLabel() {
+            var lang = (document.documentElement && document.documentElement.lang) ? document.documentElement.lang.toLowerCase() : 'ru';
+            if (lang.indexOf('kk') === 0) {
+                return 'Жіберілуде...';
+            }
+            if (lang.indexOf('en') === 0) {
+                return 'Sending...';
+            }
+            return 'Отправляем...';
+        }
+
+        function getFailureMessage() {
+            var lang = (document.documentElement && document.documentElement.lang) ? document.documentElement.lang.toLowerCase() : 'ru';
+            if (lang.indexOf('kk') === 0) {
+                return 'Өтінімді жіберу мүмкін болмады. Қайта көріңіз.';
+            }
+            if (lang.indexOf('en') === 0) {
+                return 'We could not send the request. Please try again.';
+            }
+            return 'Не удалось отправить заявку. Попробуйте еще раз.';
+        }
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.dataset.originalLabel = submitButton.textContent;
+                submitButton.textContent = getSubmittingLabel();
+            }
+
+            var payload = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: payload,
+                credentials: 'same-origin'
+            }).then(function (response) {
+                if (!response.ok) {
+                    console.warn('Order request returned HTTP %s', response.status);
+                }
+
+                form.reset();
+                closeModal();
+            }).catch(function (error) {
+                console.error('Order request failed:', error);
+                window.alert(getFailureMessage());
+            }).finally(function () {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = submitButton.dataset.originalLabel || submitButton.textContent;
+                    delete submitButton.dataset.originalLabel;
+                }
+            });
+        });
+    }
+
     function setupMobileNav() {
         var header = document.querySelector('.header');
         if (!header) {
@@ -130,16 +195,22 @@
             return;
         }
 
-        var openLabel = toggle.getAttribute('data-label-open') || toggle.getAttribute('aria-label') || 'Open menu';
-        var closeLabel = toggle.getAttribute('data-label-close') || 'Close menu';
         var media = window.matchMedia ? window.matchMedia('(max-width: 900px)') : null;
 
         function isMobile() {
             return media ? media.matches : window.innerWidth <= 900;
         }
 
+        function getLabels() {
+            return {
+                open: toggle.getAttribute('data-label-open') || toggle.getAttribute('aria-label') || 'Open menu',
+                close: toggle.getAttribute('data-label-close') || 'Close menu'
+            };
+        }
+
         function setToggleLabel(isOpen) {
-            toggle.setAttribute('aria-label', isOpen ? closeLabel : openLabel);
+            var labels = getLabels();
+            toggle.setAttribute('aria-label', isOpen ? labels.close : labels.open);
         }
 
         function setOpen(isOpen) {
@@ -162,6 +233,10 @@
             if (e.key === 'Escape') {
                 setOpen(false);
             }
+        });
+
+        document.addEventListener('aprostudio:languagechange', function () {
+            setToggleLabel(header.classList.contains('header--nav-open'));
         });
 
         document.addEventListener('click', function (event) {
@@ -1593,6 +1668,7 @@
     try {
         setSpaceEffectsEnabled(spaceEffectsEnabled);
         setupModal();
+        setupOrderForm();
         setupMobileNav();
         if (mobileSpaceEffects) {
             setupAsteroids();
