@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A-Pro Studio | Инкубатор молодых IT-специалистов</title>
-    {# ======= SEO: ??????? ????-???? ======= #}
     <meta name="fragment" content="!">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
@@ -12,16 +11,14 @@
     <meta name="description" content="A-Pro Studio — инкубатор молодых IT-специалистов. Реальные проекты, практическая среда, развитие в IT-индустрии.">
     <meta name="keywords" content="A-Pro Studio, IT инкубатор, молодые специалисты, веб разработка, мобильные приложения, Атырау">
     <meta name="author" content="A-Pro Studio">
-    {# ======= Schema.org / itemprop ======= #}
     <meta itemprop="name" content="A-Pro Studio">
     <meta itemprop="description" content="A-Pro Studio — инкубатор молодых IT-специалистов.">
-    <meta itemprop="image" content="https://studio.a-pro.kz{{ url_for('static', filename='images/A-pro-logo.png') }}">
-    {# ======= Open Graph (??? ????????: VK, Facebook, Telegram) ======= #}
+    <meta itemprop="image" content="https://studio.a-pro.kz/static/images/A-pro-logo.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="A-Pro Studio">
     <meta property="og:description" content="A-Pro Studio — инкубатор молодых IT-специалистов. Реальные проекты, практическая среда, развитие в IT-индустрии.">
-    <meta property="og:image" content="https://studio.a-pro.kz{{ url_for('static', filename='images/A-pro-logo.png') }}">
-    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:image" content="https://studio.a-pro.kz/static/images/A-pro-logo.png">
+    <meta property="og:url" content="<?php echo htmlspecialchars($currentUrl, ENT_QUOTES); ?>">
     <meta property="og:site_name" content="studio.a-pro.kz">
     <meta property="og:locale" content="ru_RU">
    
@@ -35,8 +32,8 @@
 
     <meta name="yandex-verification" content="f5b72a8e5b252275">
     <meta name="google-site-verification" content="LRwO0sAZ_6mt-KgAIVrH7hf9eusG7w_dddurlngYgMI">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/A-pro-logo.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="icon" type="image/png" href="/static/images/A-pro-logo.png">
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body class="body">
 
@@ -72,7 +69,7 @@
 <header class="header reveal-panel reveal-panel--header">
     <div class="header-inner">
         <a href="#hero" class="header-logo-link">
-            <img class="header-logo" src="{{ url_for('static', filename='images/A-pro-logo.png') }}" alt="A-Pro Studio">
+            <img class="header-logo" src="/static/images/A-pro-logo.png" alt="A-Pro Studio">
         </a>
         <button class="header-menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Открыть меню" data-label-open="Открыть меню" data-label-close="Закрыть меню">
             <span class="header-menu-icon" aria-hidden="true">
@@ -170,7 +167,7 @@
     </div>
     <div class="hero-inner">
         <span class="hero-kicker">Инкубатор молодых IT-специалистов</span>
-        <img class="hero-logo" src="{{ url_for('static', filename='images/A-pro-logo.png') }}" alt="A-Pro Studio" width="140" height="140">
+        <img class="hero-logo" src="/static/images/A-pro-logo.png" alt="A-Pro Studio" width="140" height="140">
         <h1 class="hero-title">A-Pro Studio — место, где молодые специалисты создают реальные цифровые продукты</h1>
         <p class="hero-lead">Проекты для бизнеса и общества, поддержка наставников и честная практическая среда.</p>
         <div class="hero-points">
@@ -250,7 +247,7 @@
     <div class="business-card-grid">
         <div class="card card--hero card--business">
             <header class="card-header">
-                <img class="card-logo" src="{{ url_for('static', filename='images/A-pro-logo.png') }}" alt="A-Pro Studio" width="96" height="72">
+                <img class="card-logo" src="/static/images/A-pro-logo.png" alt="A-Pro Studio" width="96" height="72">
                 <div class="card-logo-text">
                     <span class="card-logo-name">A-Pro Studio</span>
                     <span class="card-logo-sub">Создание сайтов</span>
@@ -566,27 +563,27 @@
     </div>
     <div class="specialists-grid">
         <article class="specialist-card">
-            <img class="specialist-photo" src="{{ url_for('static', filename='images/pep_1.png') }}" alt="Калымжанов Нурболат" width="80" height="80">
+            <img class="specialist-photo" src="/static/images/pep_1.png" alt="Калымжанов Нурболат" width="80" height="80">
             <h3 class="specialist-name">Калымжанов Нурболат</h3>
             <p class="specialist-role">C# / .NET, Otbasy Bank</p>
         </article>
         <article class="specialist-card">
-            <img class="specialist-photo" src="{{ url_for('static', filename='images/pep_2.png') }}" alt="Гилажев Жандос" width="80" height="80">
+            <img class="specialist-photo" src="/static/images/pep_2.png" alt="Гилажев Жандос" width="80" height="80">
             <h3 class="specialist-name">Гилажев Жандос</h3>
             <p class="specialist-role">Mobile Developer, A-Pro Solutions</p>
         </article>
         <article class="specialist-card">
-            <img class="specialist-photo" src="{{ url_for('static', filename='images/pep_3.png') }}" alt="Адайбек Дархан" width="80" height="80">
+            <img class="specialist-photo" src="/static/images/pep_3.png" alt="Адайбек Дархан" width="80" height="80">
             <h3 class="specialist-name">Адайбек Дархан</h3>
             <p class="specialist-role">Software Engineer, EPAM Systems</p>
         </article>
         <article class="specialist-card">
-            <img class="specialist-photo" src="{{ url_for('static', filename='images/pep_4.png') }}" alt="Кулуш Асхат" width="80" height="80">
+            <img class="specialist-photo" src="/static/images/pep_4.png" alt="Кулуш Асхат" width="80" height="80">
             <h3 class="specialist-name">Кулуш Асхат</h3>
             <p class="specialist-role">Software Engineer, Kaspi Bank</p>
         </article>
         <article class="specialist-card">
-            <img class="specialist-photo" src="{{ url_for('static', filename='images/pep_5.png') }}" alt="Жұмаберген Алтынбек" width="80" height="80">
+            <img class="specialist-photo" src="/static/images/pep_5.png" alt="Жұмаберген Алтынбек" width="80" height="80">
             <h3 class="specialist-name">Жұмаберген Алтынбек</h3>
             <p class="specialist-role">C# / .NET, Germany-Bill Orga</p>
         </article>
@@ -688,7 +685,7 @@
             <button type="button" class="modal-close" onclick="closeModal()" aria-label="Закрыть">×</button>
         </div>
         <div class="modal-body">
-            <form class="form" action="{{ url_for('home') }}" method="post" data-order-form>
+            <form class="form" action="<?php echo htmlspecialchars($formAction, ENT_QUOTES); ?>" method="post" data-order-form>
                 <div class="input-wrap">
                     <span class="input-icon" aria-hidden="true">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.6-3.2 4.5-5 8-5s6.4 1.8 8 5"/></svg>
@@ -756,7 +753,7 @@
     </div>
     <div class="footer-main">
         <div class="footer-block">
-            <img class="footer-logo" src="{{ url_for('static', filename='images/A-pro-logo.png') }}" alt="A-Pro Studio" width="120" height="40">
+            <img class="footer-logo" src="/static/images/A-pro-logo.png" alt="A-Pro Studio" width="120" height="40">
         </div>
         <div class="footer-block">
             <h4 class="footer-heading">Контакты</h4>
@@ -775,9 +772,9 @@
     <div class="footer-bottom">© <span id="current-year"></span> A-Pro Studio. Все права защищены</div>
 </footer>
 
-<script src="{{ url_for('static', filename='js/i18n_dict.js') }}"></script>
-<script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="/static/js/i18n_dict.js"></script>
+<script src="/static/js/i18n.js"></script>
+<script src="/static/js/main.js"></script>
 
 </body>
 </html>
